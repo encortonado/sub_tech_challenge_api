@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import java.util.Optional;
+
 import static org.mockito.Mockito.*;
 
 class VehicleRepositoryTest {
@@ -50,6 +53,27 @@ class VehicleRepositoryTest {
 
                 verify(vehicleRepository, times(1)).save(any(VehicleEntity.class));
 
+            }
+
+            @Test
+            void updateVehicleRegisterTest() {
+                VehicleEntity vehicleEntity = TestUtils.buildVehicleEntity();
+
+                when(vehicleRepository.findById(any(Long.class))).thenReturn(Optional.of(vehicleEntity));
+
+                VehicleEntity updateVehicle = vehicleRepository.findById(vehicleEntity.getId()).get();
+                updateVehicle.setBrand("Corolla");
+
+                when(vehicleRepository.save(any(VehicleEntity.class))).thenReturn(updateVehicle);
+
+                var vehicleRegistered = vehicleRepository.save(updateVehicle);
+
+                Assertions.assertThat(vehicleRegistered)
+                        .isNotNull()
+                        .isInstanceOf(VehicleEntity.class)
+                        .isEqualTo(vehicleEntity);
+
+                verify(vehicleRepository, times(1)).save(any(VehicleEntity.class));
             }
 
         }
