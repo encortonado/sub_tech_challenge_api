@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class VehicleEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = "Brand cannot be blank")
