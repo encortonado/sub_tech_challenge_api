@@ -17,6 +17,18 @@ public class TestUtils {
         return vehicleEntity;
     }
 
+    public static VehicleEntity buildVehicleEntityWithoutId() {
+
+        VehicleEntity vehicleEntity = new VehicleEntity();
+        vehicleEntity.setYear(2023);
+        vehicleEntity.setBrand("Ford");
+        vehicleEntity.setModel("Ka");
+        vehicleEntity.setColor("Red");
+        vehicleEntity.setPrice(244400.00);
+
+        return vehicleEntity;
+    }
+
     public static VehicleEntity anotherBuildVehicleEntity() {
 
         VehicleEntity vehicleEntity = new VehicleEntity();
