@@ -64,7 +64,7 @@ class VehicleControllerTest {
             VehicleEntity vehicleEntity = TestUtils.buildVehicleEntity();
             when(vehicleService.findById(vehicleEntity.getId())).thenReturn(vehicleEntity);
 
-            mockMvc.perform(get("/vehicle/{id}", vehicleEntity.getId()))
+            mockMvc.perform(get("/api/vehicle/{id}", vehicleEntity.getId()))
                     .andDo(print())
                     .andExpect(status().isOk());
 
@@ -82,7 +82,7 @@ class VehicleControllerTest {
 
             when(vehicleService.listVehicles()).thenReturn(vehicles);
 
-            mockMvc.perform(get("/vehicle"))
+            mockMvc.perform(get("/api/vehicle"))
                     .andDo(print())
                     .andExpect(status().isOk());
 
@@ -98,7 +98,7 @@ class VehicleControllerTest {
                     .thenAnswer(i -> i.getArgument(0));
 
             mockMvc.perform(
-                    post("/vehicle")
+                    post("/api/vehicle")
                             .contentType(MediaType.APPLICATION_JSON)
                             .content(asJsonString(vehicleEntity))
             )
@@ -116,7 +116,7 @@ class VehicleControllerTest {
 
             when(vehicleService.updateVehicleRegister(any(VehicleEntity.class))).thenAnswer(i -> i.getArgument(0));
 
-            mockMvc.perform(put("/vehicle")
+            mockMvc.perform(put("/api/vehicle")
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(asJsonString(vehicleEntity))
             ).andExpect(status().isOk())

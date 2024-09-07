@@ -15,4 +15,8 @@ spring:
   sql:
     init:
       mode: always
-
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-iugtbtykhkw0lt8h.us.auth0.com/
