@@ -1,6 +1,9 @@
 package br.com.fiap.tech.sub_tech_challenge_api.utils;
 
 import br.com.fiap.tech.sub_tech_challenge_api.application.vehicle.entities.VehicleEntity;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 public class TestUtils {
 
@@ -40,5 +43,14 @@ public class TestUtils {
         vehicleEntity.setPrice(232400.00);
 
         return vehicleEntity;
+    }
+
+    public static String asJsonString(final Object obj) throws JsonProcessingException {
+
+        ObjectMapper om = new ObjectMapper();
+
+        om.registerModule(new JavaTimeModule());
+
+        return om.writeValueAsString(obj);
     }
 }
