@@ -4,9 +4,11 @@ import br.com.fiap.tech.sub_tech_challenge_api.adapter.entrypoint.persistance.Ve
 import br.com.fiap.tech.sub_tech_challenge_api.application.vehicle.entities.VehicleEntity;
 import br.com.fiap.tech.sub_tech_challenge_api.application.vehicle.ports.IVehicleService;
 import br.com.fiap.tech.sub_tech_challenge_api.infrastructure.exceptions.CustomErrorTypeException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class VehicleService implements IVehicleService {
 
     private final VehicleRepository vehicleRepository;
