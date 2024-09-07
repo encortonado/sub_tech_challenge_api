@@ -2,19 +2,17 @@ spring:
   application:
     name: sub_tech_challenge_api
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:postgresql://localhost:5432/challenge
+    driver-class-name: org.postgresql.Driver
+    username: posfiap
+    password: posfiap2
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
   sql:
     init:
-      platform: h2
-  h2:
-    console:
-      enabled: true  # Habilita o console web do H2 para testes
-      path: /h2-console  # Caminho para acessar o console
-  jpa:
-    hibernate:
-      ddl-auto: update  # Cria/atualiza automaticamente o schema do banco com base nas entidades
-    show-sql: true  # Mostra as queries SQL no console
-    database-platform: org.hibernate.dialect.H2Dialect
+      mode: always
+

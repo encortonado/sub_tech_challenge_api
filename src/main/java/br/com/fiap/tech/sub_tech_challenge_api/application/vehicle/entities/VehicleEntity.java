@@ -1,6 +1,8 @@
 package br.com.fiap.tech.sub_tech_challenge_api.application.vehicle.entities;
 
 
+import br.com.fiap.tech.sub_tech_challenge_api.application.client.entities.ClientEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -8,6 +10,9 @@ import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Table(name = "TB_VEHICLE")
 @Entity
@@ -38,5 +43,9 @@ public class VehicleEntity {
 
     @Positive(message = "Price must be positive")
     private double price;
+
+    @ManyToMany(mappedBy = "vehicles")
+    @JsonIgnore
+    private Set<ClientEntity> clients = new HashSet<>();
 
 }
