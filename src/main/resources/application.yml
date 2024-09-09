@@ -2,10 +2,10 @@ spring:
   application:
     name: sub_tech_challenge_api
   datasource:
-    url: jdbc:postgresql://localhost:5432/challenge
+    url: jdbc:postgresql://challenge.ctmuyuogk8tb.us-east-2.rds.amazonaws.com/challenge
     driver-class-name: org.postgresql.Driver
-    username: posfiap
-    password: posfiap2
+    username: postgres
+    password: postgres2
   jpa:
     properties:
       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -20,5 +20,3 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: https://dev-iugtbtykhkw0lt8h.us.auth0.com/
-  profiles:
-    default: default
