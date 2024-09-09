@@ -30,7 +30,7 @@ jobs:
     runs-on: [aws-ec2]
     steps:
       - name: Pull Image from Docker Hub
-        run: docker pull in encortondo/sub_tech_challenge_api:latest
+        run: docker pull encortondo/sub_tech_challenge_api:latest
       - name: Delete old container
         run: docker rm -f sub_tech_challenge_api_container
       - name: Run Docker Container
