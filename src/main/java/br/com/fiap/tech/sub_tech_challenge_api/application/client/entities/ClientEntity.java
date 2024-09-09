@@ -1,6 +1,7 @@
 package br.com.fiap.tech.sub_tech_challenge_api.application.client.entities;
 
 import br.com.fiap.tech.sub_tech_challenge_api.application.vehicle.entities.VehicleEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -25,6 +26,7 @@ public class ClientEntity {
     @Id
     private String cpf;
 
+    @JsonIgnore
     @NotBlank(message = "Password is required")
     @Size(min = 6, message = "Password must have at least 6 characters")
     private String password;
