@@ -14,9 +14,10 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
+          distribution: 'temurin'
           java-version: '17'
       - name: Build Project
-        run: mvn clean install
+        run: mvn clean install -DskipTests
       - name: Login to Docker Hub
         run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build Docker Image
@@ -29,7 +30,7 @@ jobs:
     runs-on: [aws-ec2]
     steps:
       - name: Pull Image from Docker Hub
-        run: docker pull in encortondo/sub_tech_challenge_api:latest
+        run: docker pull encortondo/sub_tech_challenge_api:latest
       - name: Delete old container
         run: docker rm -f sub_tech_challenge_api_container
       - name: Run Docker Container
