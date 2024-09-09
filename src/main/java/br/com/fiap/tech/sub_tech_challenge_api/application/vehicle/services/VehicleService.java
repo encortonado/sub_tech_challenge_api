@@ -40,4 +40,10 @@ public class VehicleService implements IVehicleService {
         return vehicleRepository.findById(id)
                 .orElseThrow(() -> new CustomErrorTypeException("Veículo nao encontrado"));
     }
+
+    @Override
+    public List<VehicleEntity> listSoldVehicles() {
+
+        return vehicleRepository.findAllSoldVehicles();
+    }
 }

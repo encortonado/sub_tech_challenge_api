@@ -70,6 +70,31 @@ class VehicleServiceTest {
         }
 
         @Test
+        void listSoldVehicles() {
+
+            List<VehicleEntity> vehicles = new ArrayList<>();
+            vehicles.add(TestUtils.buildVehicleEntity());
+            vehicles.add(TestUtils.buildVehicleEntity());
+            vehicles.add(TestUtils.anotherBuildVehicleEntity());
+
+            when(vehicleRepository.findAllSoldVehicles()).thenReturn(vehicles);
+
+            List<VehicleEntity> result = vehicleService.listSoldVehicles();
+
+            Assertions.assertThat(result)
+                    .hasSize(3)
+                    .containsExactly(vehicles.get(0), vehicles.get(1), vehicles.get(2));
+
+            Assertions.assertThat(result.stream())
+                    .asList()
+                    .allSatisfy(msg -> {
+                        Assertions.assertThat(msg).isNotNull().isInstanceOf(VehicleEntity.class);
+                    });
+
+
+        }
+
+        @Test
         void registerVehicle() {
 
             VehicleEntity vehicleEntity = TestUtils.buildVehicleEntityWithoutId();

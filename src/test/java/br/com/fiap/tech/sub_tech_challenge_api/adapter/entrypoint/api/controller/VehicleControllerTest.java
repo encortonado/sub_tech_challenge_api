@@ -91,6 +91,24 @@ class VehicleControllerTest {
         }
 
         @Test
+        void shouldFindAllSold() throws Exception {
+
+            List<VehicleEntity> vehicles = new ArrayList<>();
+            vehicles.add(TestUtils.anotherBuildVehicleEntity());
+            vehicles.add(TestUtils.buildVehicleEntity());
+            vehicles.add(TestUtils.buildVehicleEntity());
+
+            when(vehicleService.listSoldVehicles()).thenReturn(vehicles);
+
+            mockMvc.perform(get("/api/vehicle/sold"))
+                    .andDo(print())
+                    .andExpect(status().isOk());
+
+            verify(vehicleService, times(1)).listSoldVehicles();
+
+        }
+
+        @Test
         void save() throws Exception {
             VehicleEntity vehicleEntity = TestUtils.buildVehicleEntityWithoutId();
 
