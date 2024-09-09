@@ -107,6 +107,27 @@ class VehicleRepositoryTest {
 
                 }
 
+                @Test
+                void listAllSoldVehiclesTest() {
+                    VehicleEntity vehicleEntity = TestUtils.buildVehicleEntity();
+                    VehicleEntity vehicleEntity2 = TestUtils.anotherBuildVehicleEntity();
+
+                    List<VehicleEntity> vehicleEntityList = new ArrayList<>();
+                    vehicleEntityList.add(vehicleEntity);
+                    vehicleEntityList.add(vehicleEntity2);
+
+                    when(vehicleRepository.findAllSoldVehicles()).thenReturn(vehicleEntityList);
+
+                    var vehicleList = vehicleRepository.findAllSoldVehicles();
+                    Assertions.assertThat(vehicleList)
+                            .isNotNull()
+                            .isInstanceOf(List.class)
+                            .isEqualTo(vehicleEntityList);
+
+                    verify(vehicleRepository, times(1)).findAllSoldVehicles();
+
+                }
+
             }
 
         }

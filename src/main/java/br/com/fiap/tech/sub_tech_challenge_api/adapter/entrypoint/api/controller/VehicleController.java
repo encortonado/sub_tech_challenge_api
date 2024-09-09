@@ -29,6 +29,11 @@ public class VehicleController {
         return ResponseEntity.ok().body(vehicleService.listVehicles());
     }
 
+    @GetMapping("/sold")
+    public ResponseEntity<List<VehicleEntity>> findAllSoldVehicles() {
+        return ResponseEntity.ok().body(vehicleService.listSoldVehicles());
+    }
+
     @PostMapping
     public ResponseEntity<VehicleEntity> save(@RequestBody VehicleEntity vehicleEntity) {
         return ResponseEntity
