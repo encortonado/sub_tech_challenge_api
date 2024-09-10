@@ -12,8 +12,7 @@ public interface VehicleRepository extends JpaRepository<VehicleEntity, Long> {
 
     List<VehicleEntity> findAllByOrderByPriceAsc();
 
-    @Query("SELECT v FROM VehicleEntity v WHERE SIZE(v.clients) > 0 ORDER BY v.price ASC")
+    @Query("SELECT v FROM VehicleEntity v WHERE SIZE(v.clients) > 0")
     List<VehicleEntity> findAllSoldVehicles();
-
 
 }
