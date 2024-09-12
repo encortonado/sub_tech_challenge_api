@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/sub_tech_challenge_api-0.0.1.jar app.jar
 
 # Expondo a porta que a aplicação irá rodar
-EXPOSE 8080
+EXPOSE 8081
 
 # Definindo o comando para rodar a aplicação
 ENTRYPOINT ["java", "-jar", "app.jar"]

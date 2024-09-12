@@ -49,20 +49,23 @@ A aplicação oferece uma API para cadastro de veículos e clientes, além de fu
 
 ## 🚀 Como Executar a Aplicação
 
-1. **Clone o repositório**: 
+1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/encortonado/sub_tech_challenge_api.git
+   git clone https://github.com/encortonado/sub_tech_challenge_auth.git
    ```
 
-2. **Suba os containers Docker** (se configurado com Docker Compose):
+2. **Rode os Comandos abaixo para executar** o banco de dados localmente:
    ```bash
-   docker-compose up
+   ./run-sh db
    ```
+
+   ps. Caso for rodar as duas aplicações simultaneamente, rode apenas uma instância de banco de dados
 
 3. **Execute a aplicação** localmente:
    ```bash
-   mvn spring-boot:run
+   ./run-sh app
    ```
+
 
 ## 🧪 Executando os Testes
 
@@ -125,6 +128,7 @@ A aplicação expõe os seguintes endpoints para cadastro e venda de veículos:
   Authorization: Bearer {token}
 ## 📚 Referências e Recursos Úteis
 
+- [Collection Postman](./Vehicle%20Challenge.postman_collection.json)
 - [Documentação oficial do Spring](https://docs.spring.io)
 - [Jakarta Bean Validations](https://beanvalidation.org/)
 - [Cucumber](https://cucumber.io)
